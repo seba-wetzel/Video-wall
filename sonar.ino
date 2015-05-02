@@ -1,3 +1,9 @@
+/* Basicamente este es un programa Arduino que se ejecuta cuando recibe por el puerto serie //
+// la letra p (de prendido quizas?), se fija si hay un objeto en la distacina especificada  //
+// y si esta espera a que alguien lo saque, para mandar la señal R (de reproducir?) por el  //
+// puerto serie. Si no hay nada adelante, espera a que lo halla, y despues esperar a que lo //
+// saquen para manda la señal. Una vez hecho esto se queda a la espera de la señal p.       */
+
 boolean estado = false;
 boolean iniciar = true;
 int entrada;
@@ -50,10 +56,10 @@ void loop() {
 }
 
 
-int sonar() {
+int sonar() {               // funcion que devuelve un entero correspondiente a la distancia
   int valor;
   int calculo;
-  for(int i=0; i< 3; i++){  
+  for(int i=0; i< 3; i++){  // Se usa un bucle para hacer la medicion varias veces y promediar
     digitalWrite(9, LOW); /* Por cuestión de estabilización del sensor*/
     delayMicroseconds(5);
     digitalWrite(9, HIGH); /* envío del pulso ultrasónico*/
