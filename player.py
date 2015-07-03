@@ -9,10 +9,9 @@ pygame.init()
 
 path = "/home/pi/test.mp4"
 
-arduino=serial.Serial('/dev/ttyACM0', 9600, timeout=1.0)
+arduino=serial.Serial('/dev/ttyACM1', 9600, timeout=1.0)
 arduino.open()
 inicio='p'
-stop='a'
 
 
 def blackscreen():
@@ -34,8 +33,9 @@ arduino.setDTR(True)
 arduino.write(inicio)
 try:
     while True:
-        if arduino.readline() > 0:
-            arduino.write(stop)
+        entrada=arduino.readline()
+        print entrada
+        if entrada == 'R':
             player()
 except KeyboardInterrupt:
     arduino.close()
