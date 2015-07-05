@@ -47,7 +47,7 @@ void loop() {
     while (estado) {
       sonar = ultrasonido();
       Serial.println(sonar);
-      if (sonar > 15) {
+      if (sonar > 16) {
         contador++;
         delay(100);
         //Serial.println(contador);
