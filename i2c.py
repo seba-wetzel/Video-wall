@@ -44,8 +44,9 @@ def player ():
 def leerSensor(addr=direccion):
     sensar = True
     while sensar :
-          valor = bus.read_i2c_block_data(addr,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
-          return ((valor[1] + (256 * valor[0])) / 1.2)
+          data = bus.read_i2c_block_data(0x23,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
+          valor = (data[1] + (256 * data[0]))   
+          return valor
           sensar = False
 
 
