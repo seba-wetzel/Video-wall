@@ -44,7 +44,7 @@ def convertToInt(data) :   #funcion para covertir los 2 bytes de respuesta en un
 def leerSensor(addr=direccion):
     sensar = True
     while sensar :
-          sen valor = bus.read_i2c_block_data(addr,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
+          valor = bus.read_i2c_block_data(addr,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
           return convertToInt(valor)
           sensar = False
 
