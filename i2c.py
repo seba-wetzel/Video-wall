@@ -55,15 +55,18 @@ try:
     while True:
         while iniciar:
             sensor = leerSensor()
+            delay.sleep(0.1)
             if sensor <= 50:
                 estado = False
                 
        
             elif sensor >= 50:
-                estado = True
+                delay.sleep(0.1)
+		estado = True
                 iniciar= False
         while estado:
             sensor = leerSensor()
+            delay.sleep(0.1)
             if sensor >=50:
                 contador = contador+1
                 delay.sleep(0.1)
@@ -77,6 +80,7 @@ try:
                 iniciar= True
     
         sensor = leerSensor()
+	delay.sleep(0.1)
         if sensor <= 50:
          iniciar = True
 except KeyboardInterrupt:
