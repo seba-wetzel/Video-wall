@@ -11,7 +11,7 @@ import smbus
 
 bus = smbus.SMBus(1)  # La raspi rev2 usa el dev1, la raspi 2 ?
 contador = 0
-
+path = ~/Video-wall/test.mp4
 
 def player ():
     args = ['omxplayer', path]
