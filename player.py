@@ -9,7 +9,7 @@ pygame.init()
 
 path = "/home/pi/test.mp4"
 
-arduino=serial.Serial('/dev/ttyACM1', 9600, timeout=1.0)
+arduino=serial.Serial('/dev/ttyACM0', 9600, timeout=1.0)
 arduino.open()
 inicio='p'
 
@@ -21,6 +21,7 @@ def blackscreen():
     screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
   
 def player ():
+    print "reproduciendo"
     args = ['omxplayer', path]
     subprocess.Popen(args,stdout=open(os.devnull, 'wb'), close_fds=True)
    

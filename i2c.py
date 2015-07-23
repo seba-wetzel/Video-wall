@@ -38,11 +38,15 @@ def player ():
     
 
 def convertToInt(data) :   #funcion para covertir los 2 bytes de respuesta en un entero
+    print ((data[1] + (256 * data[0])) / 1.2)
     return ((data[1] + (256 * data[0])) / 1.2)
 
 def leerSensor(addr=direccion):
-   valor = bus.read_i2c_block_data(addr,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
-   return convertToInt(valor)
+    sensar = True
+    while sensar :
+          sen valor = bus.read_i2c_block_data(addr,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
+          return convertToInt(valor)
+          sensar = False
 
 
 pygame.init()
@@ -53,16 +57,16 @@ try:
     while True:
         while iniciar:
             sensor = leerSensor()
-            if sensor =< 50:
+            if sensor <= 50:
                 estado = False
                 
        
-            elif sensor => 50:
+            elif sensor >= 50:
                 estado = True
                 iniciar= False
         while estado:
             sensor = leerSensor()
-            if sensor =>50:
+            if sensor >=50:
                 contador = contador+1
                 delay.sleep(0.1)
                 if contador >2:
@@ -75,7 +79,7 @@ try:
                 iniciar= True
     
         sensor = leerSensor()
-        if sensor =< 50:
+        if sensor <= 50:
          iniciar = True
 except KeyboardInterrupt:
-    puerto.cleanup()
+       print "Saliendo"
