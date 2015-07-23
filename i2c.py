@@ -37,21 +37,18 @@ def player ():
     salida = reproductor.communicate()
     
 
-#def convertToInt(data) :   #funcion para covertir los 2 bytes de respuesta en un entero
-    #print ((data[1] + (256 * data[0])) / 1.2)
-    #return ((data[1] + (256 * data[0])) / 1.2)
-
 def leerSensor(addr=direccion):
     sensar = True
     while sensar :
           data = bus.read_i2c_block_data(0x23,0x21) #0x21 corresponde a leer el sensor a 1lx de resolucion a 120ms de respuesta 
-          valor = (data[1] + (256 * data[0]))   
+          valor = (data[1] + (256 * data[0]))  
+          print valor 
           return valor
           sensar = False
 
 
-pygame.init()
-fondoNike()
+#pygame.init()
+#fondoNike()
 
 try:
     
