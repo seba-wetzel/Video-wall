@@ -4,6 +4,7 @@
 // puerto serie. Si no hay nada adelante, espera a que lo halla, y despues esperar a que lo //
 // saquen para manda la señal. Una vez hecho esto se queda a la espera de la señal p.       */
 
+
 boolean estado = false;
 boolean iniciar = true;
 bool mandarR = true;
