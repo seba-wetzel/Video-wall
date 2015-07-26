@@ -129,7 +129,7 @@ def pantalla_lcd(caracteres,posX, posY):                               #generar 
     image = Image.new('1', (LCD.LCDWIDTH, LCD.LCDHEIGHT))
     texto = str(caracteres)
     draw = ImageDraw.Draw(image)
-    draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
+    //draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
     draw = ImageDraw.Draw(image)
     font = ImageFont.load_default()
     draw.text((posX, posY), texto, font=font)
