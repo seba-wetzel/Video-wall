@@ -35,3 +35,4 @@ def clean ():
     disp.clear()
 def blank():
     draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
+    
