@@ -23,7 +23,7 @@ maximo=0
 
 #leemos los valores guardados en el archivo de texto
 def obtenerValores():
-    global maximo, minimo
+    global maximo, minimo, lista
     valores = open('valores','r')
     for line in valores:
         lista.append(line.strip())
@@ -55,6 +55,7 @@ def fondoNike():
           pygame.display.update()
           delay.sleep(0.1)
           imprimir = False
+    return 0
 
 def leerSensor():
     sensar = True
@@ -76,10 +77,10 @@ def conDef():
         sensor = leerSensor()
         lista.append(sensor)
         print i
-        LCD.blank()
         LCD.write('configurando',2,0)
-        LCD.write( i,25,25)
-        LCD.write( sensor,35,25)
+        LCD.write( abs(i-15),25,25)
+        LCD.write( sensor,35,10)
+        LCD.blank()
         delay.sleep(0.5)
     
       
@@ -96,6 +97,7 @@ def conDef():
     valores.write(str (valoresMinMax[1]))
     valores.close()    
     interrupcion = False
+    obtenerValores()                          #volvemos a leer el archivo de texto para actualizar los datos
     
 
 
@@ -123,6 +125,7 @@ try:
           waitToLight = False                         #esperar a que halla luz False, para que sea lo segundo que haga
        
           while waitToDark:
+             LCD.blank()
              print "wait to dark stament"
              LCD.write('claridad',2,0)
              
@@ -130,7 +133,7 @@ try:
                 conDef()
              sensor = leerSensor()
              LCD.write( sensor,25,25)
-             umbralInferior = int(minimo) +60
+             umbralInferior = int(minimo)+5
              if sensor < umbralInferior:
                 waitToDark = False
                 waitToLight = True
@@ -145,7 +148,7 @@ try:
                 LCD.write('oscuridad',2,0)
                 sensor = leerSensor()
                 LCD.write( sensor,25,25)
-                umbralSuperior = int(maximo) -20
+                umbralSuperior = int(maximo)-5
                 
                 if sensor > umbralSuperior :
                    contador = contador+1
